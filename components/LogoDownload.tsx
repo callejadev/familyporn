@@ -94,7 +94,6 @@ export default function LogoDownload() {
                 transform: 'translate(-2px, 1px)',
                 color: '#00ffff',
                 WebkitTextStroke: '2px #000000',
-                textStroke: '2px #000000',
                 zIndex: 1,
                 clipPath: 'polygon(0 0, 100% 0, 100% 35%, 0 35%)',
               }}
@@ -110,7 +109,6 @@ export default function LogoDownload() {
                 transform: 'translate(2px, -1px)',
                 color: '#ff00ff',
                 WebkitTextStroke: '2px #000000',
-                textStroke: '2px #000000',
                 zIndex: 1,
                 clipPath: 'polygon(0 65%, 100% 65%, 100% 100%, 0 100%)',
               }}
@@ -124,7 +122,6 @@ export default function LogoDownload() {
                 fontFamily: '"Press Start 2P", monospace',
                 letterSpacing: '8px',
                 WebkitTextStroke: '3px #000000',
-                textStroke: '3px #000000',
                 zIndex: 2,
               }}
             >
@@ -143,7 +140,6 @@ export default function LogoDownload() {
                 transform: 'translate(-2px, 1px)',
                 color: '#00ffff',
                 WebkitTextStroke: '2px #000000',
-                textStroke: '2px #000000',
                 zIndex: 1,
                 clipPath: 'polygon(0 0, 100% 0, 100% 35%, 0 35%)',
               }}
@@ -159,7 +155,6 @@ export default function LogoDownload() {
                 transform: 'translate(2px, -1px)',
                 color: '#ff00ff',
                 WebkitTextStroke: '2px #000000',
-                textStroke: '2px #000000',
                 zIndex: 1,
                 clipPath: 'polygon(0 65%, 100% 65%, 100% 100%, 0 100%)',
               }}
@@ -173,7 +168,6 @@ export default function LogoDownload() {
                 fontFamily: '"Press Start 2P", monospace',
                 letterSpacing: '8px',
                 WebkitTextStroke: '3px #000000',
-                textStroke: '3px #000000',
                 zIndex: 2,
               }}
             >
