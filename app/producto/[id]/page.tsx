@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -15,9 +16,21 @@ interface ProductPageProps {
 export default function ProductPage({ params }: ProductPageProps) {
   const product = getProduct(params.id)
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   if (!product) {
     notFound()
+  }
+
+  const totalImages = product.images.length
+  const hasGallery = totalImages > 1
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages)
+  }
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % totalImages)
   }
 
   return (
@@ -43,26 +56,69 @@ export default function ProductPage({ params }: ProductPageProps) {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Product Image */}
-          <div className="relative">
-            <div className="aspect-square bg-white/5 border border-white/10 overflow-hidden">
-              <ProductImage
-                src={product.images[0]}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+        {/* Product Image */}
+        <div className="relative">
+          <div className="relative aspect-square bg-white/5 border border-white/10 overflow-hidden">
+            <ProductImage
+              src={product.images[currentImageIndex]}
+              alt={`${product.name} - vista ${currentImageIndex + 1}`}
+            />
+
+            {hasGallery && (
+              <>
+                <button
+                  onClick={handlePrevImage}
+                  aria-label="Imagen anterior"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-black/50 px-3 py-2 text-2xl text-white transition hover:border-porno-magenta"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  aria-label="Siguiente imagen"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-black/50 px-3 py-2 text-2xl text-white transition hover:border-porno-magenta"
+                >
+                  ›
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Carousel thumbnails */}
+          {hasGallery && (
+            <div className="mt-4 flex justify-center gap-3">
+              {product.images.map((src, index) => (
+                <button
+                  key={src}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`relative h-16 w-16 overflow-hidden rounded border transition ${
+                    index === currentImageIndex
+                      ? 'border-porno-magenta'
+                      : 'border-white/20'
+                  }`}
+                >
+                  <Image
+                    src={src}
+                    alt={`Vista ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
+                </button>
+              ))}
             </div>
-            
-            {/* Design Preview */}
-            <div className="mt-4 p-6 bg-porno-black border border-white/10">
-              <p className="font-pixel text-[10px] text-white/50 mb-4 text-center">
-                DISEÑO DE LA CAMISETA
-              </p>
-              <div className="flex justify-center">
-                <Silhouette width={200} height={250} />
-              </div>
+          )}
+
+          {/* Design Preview */}
+          <div className="mt-6 p-6 bg-porno-black border border-white/10">
+            <p className="font-pixel text-[10px] text-white/50 mb-4 text-center">
+              DISEÑO DE LA CAMISETA
+            </p>
+            <div className="flex justify-center">
+              <Silhouette width={200} height={250} />
             </div>
           </div>
+        </div>
 
           {/* Product Info */}
           <div className="flex flex-col">

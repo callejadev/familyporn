@@ -33,13 +33,13 @@ export default function Header() {
           <Link href="/" className="group">
             <div className="flex flex-col">
               <span
-                className="glitch-text font-pixel text-[8px] md:text-[10px] text-white tracking-wider"
+                className="glitch-text font-pixel text-[10px] md:text-[12px] lg:text-[14px] text-white tracking-wider leading-tight"
                 data-text="LA FAMILIA"
               >
                 LA FAMILIA
               </span>
               <span
-                className="glitch-text font-pixel text-[8px] md:text-[10px] text-white tracking-wider"
+                className="glitch-text font-pixel text-[10px] md:text-[12px] lg:text-[14px] text-white tracking-wider leading-tight"
                 data-text="DEL PORNO"
               >
                 DEL PORNO

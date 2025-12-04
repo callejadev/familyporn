@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 
 interface ProductImageProps {
@@ -16,12 +14,12 @@ export default function ProductImage({
   const imageSrc = src || '/main_logo.png'
 
   return (
-    <div className={`relative ${className} bg-porno-black`}>
+    <div className={`relative w-full h-full ${className} bg-porno-black`}>
       <Image
         src={imageSrc}
         alt={alt}
         fill
-        className="object-contain p-4"
+        className="object-cover"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
     </div>

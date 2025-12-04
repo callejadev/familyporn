@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import Logo from '@/components/Logo'
 import Silhouette from '@/components/Silhouette'
 import ProductCard from '@/components/ProductCard'
+import LogoDownload from '@/components/LogoDownload'
 import { getFeaturedProducts } from '@/lib/products'
 
 export default function Home() {
@@ -17,10 +19,11 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 text-center px-4">
-          {/* Main Logo Image */}
-          <div className="animate-fade-in-up flex justify-center">
-            <Silhouette width={400} height={500} className="max-w-[80vw]" />
-          </div>
+        {/* Main Logo Image */}
+        <div className="animate-fade-in-up flex flex-col items-center gap-6">
+          <Silhouette width={400} height={500} className="max-w-[80vw]" />
+          <Logo size="xl" />
+        </div>
 
           {/* Tagline */}
           <p className="mt-12 font-display text-xl md:text-2xl tracking-[0.3em] text-white/70 animate-fade-in-up animate-delay-200">
@@ -28,11 +31,13 @@ export default function Home() {
           </p>
 
           {/* CTA */}
-          <div className="mt-12 animate-fade-in-up animate-delay-300">
-            <Link href="/tienda" className="btn-glitch btn-primary">
-              ENTRAR A LA TIENDA
-            </Link>
-          </div>
+        <div className="mt-12 animate-fade-in-up animate-delay-300">
+          <Link href="/tienda" className="btn-glitch btn-primary">
+            ENTRAR A LA TIENDA
+          </Link>
+        </div>
+
+        {process.env.NODE_ENV === 'development' && <LogoDownload />}
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
